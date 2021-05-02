@@ -39,6 +39,7 @@ def artists_list_handler():
 
 @app.route('/genres')
 def genres_list_handler():
+    elements = Genre.query.all()
     return render_template('genres.html')
 
 
