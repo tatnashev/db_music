@@ -1,3 +1,5 @@
+from flask import render_template
+
 
 def artists_list_handler():
-    return 'not supported yet'
+    return render_template('artists.html')
