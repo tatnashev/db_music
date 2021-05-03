@@ -12,37 +12,13 @@ app.config.from_mapping(
 db = SQLAlchemy(app)
 
 
-class Genre(db.Model):
-    __tablename__ = 'genre'
-
-    genre_id = db.Column(db.Integer, primary_key=True)
-    genre_name = db.Column(db.String(30))
-
-
-class Country(db.Model):
-    __tablename__ = 'country'
-
-    country_id = db.Column(db.Integer, primary_key=True)
-    country_name = db.Column(db.String(50))
+from .handlers import list_objects_handler
 
 
 # Main page handler
 @app.route('/')
-def hello():
+def main_page_handler():
     return render_template('index.html')
 
 
-@app.route('/artists')
-def artists_list_handler():
-    return render_template('artists.html')
-
-
-@app.route('/genres')
-def genres_list_handler():
-    elements = Genre.query.all()
-    return render_template('genres.html')
-
-
-@app.route('/countries')
-def countries_list_handler():
-    return render_template('countries.html')
+app.add_url_rule('/list_<obj_name>/<page_id>', view_func=list_objects_handler)
