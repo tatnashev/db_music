@@ -5,15 +5,41 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
      <title>Music indexer</title>
-     <h1 style="font-family: Arial, Helvetica, sans-serif;">Muzika</h1>
  </head>
  <body>
-    <div class="d-flex justify-content-center" style="margin-top: 15%;">
-        <div class="list-group" style="width: 500px; text-align: center; position: absolute;">
-            <a href="/list_genre/1" class="list-group-item list-group-item-action">Жанры</a>
-            <a href="/list_country/1" class="list-group-item list-group-item-action">Страны</a>
-            <a href="/list_artist/1" class="list-group-item list-group-item-action">Артисты</a>
-        </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="navbar-toggler-icon"></span>
+				</button> <a class="navbar-brand" href="http://127.0.0.1:5000">Muzika</a>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							 <a class="nav-link" href="/list_genre/1">Жанры</a>
+						</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/list_country/1">Страны</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/list_artist/1">Артисты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="/add_track">Добавить трек</a>
+                        </li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+<p class="text-center">Проект по базам данных</p>
+<p class="text-center">Саддатимов Рафаиль</p>
+<p class="text-center">Атнашев Тимофей</p>
+<p class="text-right" style="margin-right: 15px;">All rights reserved</p>
  </body>
 </html>

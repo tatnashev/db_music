@@ -12,7 +12,7 @@ app.config.from_mapping(
 db = SQLAlchemy(app)
 
 
-from .handlers import list_objects_handler
+from . import handlers
 
 
 # Main page handler
@@ -21,4 +21,4 @@ def main_page_handler():
     return render_template('index.html')
 
 
-app.add_url_rule('/list_<obj_name>/<page_id>', view_func=list_objects_handler)
+app.add_url_rule('/list_<obj_name>/<page_id>', view_func=handlers.list_objects_handler)
