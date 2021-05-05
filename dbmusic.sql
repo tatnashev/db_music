@@ -120,7 +120,6 @@ ALTER SEQUENCE public.album_tracks_album_id_seq OWNED BY public.album_tracks.alb
 
 CREATE TABLE public.artist (
     artist_id integer NOT NULL,
-    genre_id integer NOT NULL,
     country_id integer NOT NULL
 );
 
@@ -169,28 +168,6 @@ ALTER TABLE public.artist_country_id_seq OWNER TO timcha;
 --
 
 ALTER SEQUENCE public.artist_country_id_seq OWNED BY public.artist.country_id;
-
-
---
--- Name: artist_genre_id_seq; Type: SEQUENCE; Schema: public; Owner: timcha
---
-
-CREATE SEQUENCE public.artist_genre_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.artist_genre_id_seq OWNER TO timcha;
-
---
--- Name: artist_genre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: timcha
---
-
-ALTER SEQUENCE public.artist_genre_id_seq OWNED BY public.artist.genre_id;
 
 
 --
@@ -490,13 +467,6 @@ ALTER TABLE ONLY public.artist ALTER COLUMN artist_id SET DEFAULT nextval('publi
 
 
 --
--- Name: artist genre_id; Type: DEFAULT; Schema: public; Owner: timcha
---
-
-ALTER TABLE ONLY public.artist ALTER COLUMN genre_id SET DEFAULT nextval('public.artist_genre_id_seq'::regclass);
-
-
---
 -- Name: artist country_id; Type: DEFAULT; Schema: public; Owner: timcha
 --
 
@@ -579,7 +549,10 @@ COPY public.album_tracks (album_id, track_id, track_number) FROM stdin;
 -- Data for Name: artist; Type: TABLE DATA; Schema: public; Owner: timcha
 --
 
-COPY public.artist (artist_id, genre_id, country_id) FROM stdin;
+COPY public.artist (artist_id, country_id) FROM stdin;
+1	1
+2	2
+3	3
 \.
 
 
@@ -588,6 +561,9 @@ COPY public.artist (artist_id, genre_id, country_id) FROM stdin;
 --
 
 COPY public.country (country_id, country_name) FROM stdin;
+1	Великобритания                                    
+2	Германия                                          
+3	Швеция                                            
 \.
 
 
@@ -596,6 +572,12 @@ COPY public.country (country_id, country_name) FROM stdin;
 --
 
 COPY public.genre (genre_id, genre_name) FROM stdin;
+1	rock                          
+2	hardrock                      
+3	dance                         
+4	industrial                    
+5	estrada                       
+6	pop                           
 \.
 
 
@@ -604,6 +586,12 @@ COPY public.genre (genre_id, genre_name) FROM stdin;
 --
 
 COPY public.genre_artist (artist_id, genre_id) FROM stdin;
+1	1
+1	2
+2	3
+3	4
+3	5
+3	6
 \.
 
 
@@ -620,6 +608,9 @@ COPY public.group_history (group_id, team, short_bio, bio) FROM stdin;
 --
 
 COPY public.groups (group_id, artist_id, group_name) FROM stdin;
+1	1	Led Zeppelin                                      
+2	2	Rammstein                                         
+3	3	ABBA                                              
 \.
 
 
@@ -675,17 +666,10 @@ SELECT pg_catalog.setval('public.artist_country_id_seq', 1, false);
 
 
 --
--- Name: artist_genre_id_seq; Type: SEQUENCE SET; Schema: public; Owner: timcha
---
-
-SELECT pg_catalog.setval('public.artist_genre_id_seq', 1, false);
-
-
---
 -- Name: country_country_id_seq; Type: SEQUENCE SET; Schema: public; Owner: timcha
 --
 
-SELECT pg_catalog.setval('public.country_country_id_seq', 1, false);
+SELECT pg_catalog.setval('public.country_country_id_seq', 3, true);
 
 
 --
@@ -778,19 +762,11 @@ ALTER TABLE ONLY public.artist
 
 
 --
--- Name: artist artist_genre_id_key; Type: CONSTRAINT; Schema: public; Owner: timcha
---
-
-ALTER TABLE ONLY public.artist
-    ADD CONSTRAINT artist_genre_id_key UNIQUE (genre_id);
-
-
---
 -- Name: artist artist_pkey; Type: CONSTRAINT; Schema: public; Owner: timcha
 --
 
 ALTER TABLE ONLY public.artist
-    ADD CONSTRAINT artist_pkey PRIMARY KEY (artist_id, genre_id, country_id);
+    ADD CONSTRAINT artist_pkey PRIMARY KEY (artist_id, country_id);
 
 
 --
@@ -799,22 +775,6 @@ ALTER TABLE ONLY public.artist
 
 ALTER TABLE ONLY public.country
     ADD CONSTRAINT country_pkey PRIMARY KEY (country_id);
-
-
---
--- Name: genre_artist genre_artist_artist_id_key; Type: CONSTRAINT; Schema: public; Owner: timcha
---
-
-ALTER TABLE ONLY public.genre_artist
-    ADD CONSTRAINT genre_artist_artist_id_key UNIQUE (artist_id);
-
-
---
--- Name: genre_artist genre_artist_genre_id_key; Type: CONSTRAINT; Schema: public; Owner: timcha
---
-
-ALTER TABLE ONLY public.genre_artist
-    ADD CONSTRAINT genre_artist_genre_id_key UNIQUE (genre_id);
 
 
 --

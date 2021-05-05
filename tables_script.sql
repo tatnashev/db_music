@@ -19,16 +19,15 @@ CREATE TABLE groups (
 
 CREATE TABLE artist (
 	artist_id SERIAL NOT NULL UNIQUE, 
-	genre_id SERIAL NOT NULL UNIQUE, 
 	country_id SERIAL NOT NULL UNIQUE,
-	PRIMARY KEY (artist_id, genre_id, country_id), 
+	PRIMARY KEY (artist_id, country_id), 
 	FOREIGN KEY (country_id) REFERENCES country(country_id) ON DELETE CASCADE, 
 	FOREIGN KEY (artist_id) REFERENCES groups(group_id) ON DELETE CASCADE
 ); 
 
 CREATE TABLE genre_artist (
-	artist_id SERIAL NOT NULL UNIQUE, 
-	genre_id SERIAL NOT NULL UNIQUE, 
+	artist_id SERIAL NOT NULL, 
+	genre_id SERIAL NOT NULL, 
 	PRIMARY KEY (artist_id, genre_id), 
 	FOREIGN KEY (artist_id) REFERENCES artist(artist_id) ON UPDATE CASCADE, 
 	FOREIGN KEY (genre_id) REFERENCES genre(genre_id) ON UPDATE CASCADE
@@ -79,11 +78,3 @@ CREATE TABLE album_tracks (
 	FOREIGN KEY (track_id) REFERENCES tracks(track_id) ON DELETE CASCADE, 
 	FOREIGN KEY (album_id) REFERENCES album(album_id) ON DELETE CASCADE
 ); 
-
-
-
-
-
-
-
-
