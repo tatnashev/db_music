@@ -14,7 +14,7 @@ def list_objects_handler(obj_name, page_id):
     
     factory = models.get_object_class(obj_name)
     elements = factory.query.limit(K_OBJECT_LIMIT).offset(page_id * K_OBJECT_LIMIT).all()
-
+    
     return render_template(
         'listings/{}.html'.format(obj_name),
         elements=elements,
