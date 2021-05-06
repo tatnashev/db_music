@@ -2462,6 +2462,78 @@ ALTER TABLE ONLY public.musician
 
 
 --
+-- Name: TABLE album; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.album TO raf;
+GRANT ALL ON TABLE public.album TO rsaddatimov;
+
+
+--
+-- Name: TABLE album_track; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.album_track TO raf;
+GRANT ALL ON TABLE public.album_track TO rsaddatimov;
+
+
+--
+-- Name: TABLE artist; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.artist TO raf;
+GRANT ALL ON TABLE public.artist TO rsaddatimov;
+
+
+--
+-- Name: TABLE country; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.country TO raf;
+GRANT ALL ON TABLE public.country TO rsaddatimov;
+
+
+--
+-- Name: TABLE country_artist; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.country_artist TO raf;
+GRANT ALL ON TABLE public.country_artist TO rsaddatimov;
+
+
+--
+-- Name: TABLE genre; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.genre TO raf;
+GRANT ALL ON TABLE public.genre TO rsaddatimov;
+
+
+--
+-- Name: TABLE genre_artist; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.genre_artist TO raf;
+GRANT ALL ON TABLE public.genre_artist TO rsaddatimov;
+
+
+--
+-- Name: TABLE musician; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.musician TO raf;
+GRANT ALL ON TABLE public.musician TO rsaddatimov;
+
+
+--
+-- Name: TABLE track; Type: ACL; Schema: public; Owner: timcha
+--
+
+GRANT ALL ON TABLE public.track TO raf;
+GRANT ALL ON TABLE public.track TO rsaddatimov;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
