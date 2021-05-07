@@ -1,6 +1,6 @@
 from . import models
 
-from flask import render_template
+from flask import abort, render_template
 
 
 K_OBJECT_LIMIT = 10
@@ -20,3 +20,12 @@ def list_objects_handler(obj_name, page_id):
         elements=elements,
         page_id=page_id + 1
     )
+
+
+def artis_handler(artist_id):
+    artist = models.Artist.query.filter_by(artist_id=int(artist_id)).all()
+
+    if len(artist) == 0:
+        abort(404)
+
+    return render_template('artist.html', artist=artist[0])

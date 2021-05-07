@@ -21,4 +21,9 @@ def main_page_handler():
     return render_template('index.html')
 
 
+# List genres/artists/countries
 app.add_url_rule('/list_<obj_name>/<page_id>', view_func=handlers.list_objects_handler)
+
+
+# Render exact artist
+app.add_url_rule('/artist/<artist_id>', view_func=handlers.artis_handler)
