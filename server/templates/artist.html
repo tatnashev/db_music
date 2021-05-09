@@ -56,7 +56,7 @@
                 {% if artist.genres | length %}
                     <p>
                         {% for genre in artist.genres %}
-                            <a class="text-primary" href="/artist_by/genre/{{ genre.genre_id }}">
+                            <a class="text-primary" href="/artist_by/genre/{{ genre.genre_id }},1">
                                 {{  genre.genre_name.strip().capitalize() }}
                             </a>
                         {% endfor %}
@@ -66,7 +66,7 @@
                 {% if artist.countries | length %}
                     <p>
                         {% for country in artist.countries %}
-                            <a class="text-primary" href="/artist_by/country/{{ country.country_id }}">
+                            <a class="text-primary" href="/artist_by/country/{{ country.country_id }},1">
                                 {{  country.country_name.strip().capitalize() }}
                             </a>
                         {% endfor %}
