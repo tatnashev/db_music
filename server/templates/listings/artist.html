@@ -44,10 +44,10 @@
 			<nav>
 				<ul class="pagination justify-content-center" style="margin-top: 10px;">
 					<li class="page-item">
-						<a class="page-link" href="./{{ [page_id - 1, 1] | max }}">Предыдущая</a>
+						<a class="page-link" href="./{% if object_id %}{{','.join([object_id, ([page_id - 1, 1] | max) | string])}}{% else %}{{ [page_id - 1, 1] | max }}{% endif %}">Предыдущая</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="./{{ page_id + 1 }}">Следующая</a>
+						<a class="page-link" href="./{% if object_id %}{{','.join([object_id, (page_id + 1) | string])}}{% else %}{{ page_id + 1 }}{% endif %}">Следующая</a>
 					</li>
 				</ul>
 			</nav>

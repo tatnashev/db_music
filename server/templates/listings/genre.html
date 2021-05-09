@@ -36,8 +36,8 @@
 			</nav>
 			<div class="list-group" style="margin-left: 400px; margin-right: 400px; margin-top: 10px;">
                 {% for elem in elements %}
-                    <a class="list-group-item list-group-item-action" href="/artist_by/genre/{{ elem.genre_id }}">
-						{{ elem.genre_name.strip() }}
+                    <a class="list-group-item list-group-item-action" href="/artist_by/genre/{{ elem.genre_id }},1">
+						{{ elem.genre_name.strip().capitalize() }}
 					</a>
                 {% endfor %}
 			</div>

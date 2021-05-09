@@ -27,3 +27,7 @@ app.add_url_rule('/list_<obj_name>/<page_id>', view_func=handlers.list_objects_h
 
 # Render exact artist
 app.add_url_rule('/artist/<artist_id>', view_func=handlers.artis_handler)
+
+
+#
+app.add_url_rule('/artist_by/<by_object>/<int:object_id>,<int:page_id>', view_func=handlers.artists_by)
