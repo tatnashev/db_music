@@ -26,8 +26,16 @@ app.add_url_rule('/list_<obj_name>/<page_id>', view_func=handlers.list_objects_h
 
 
 # Render exact artist
-app.add_url_rule('/artist/<artist_id>', view_func=handlers.artis_handler)
+app.add_url_rule('/artist/<artist_id>', view_func=handlers.artist_handler)
 
 
-#
+# Filter artists by counttry/genre
 app.add_url_rule('/artist_by/<by_object>/<int:object_id>,<int:page_id>', view_func=handlers.artists_by)
+
+
+# Adding tracks
+app.add_url_rule('/add_track', view_func=handlers.add_track_handler, methods=['GET', 'POST'])
+
+
+# Return artists which names is like <artist_name>
+app.add_url_rule('/artist_by_name/', view_func=handlers.artist_by_name)
